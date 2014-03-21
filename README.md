@@ -20,7 +20,7 @@ grunt.loadNpmTasks('grunt-awssum-deploy-branch');
 
 To Run:
 ```js
-grunt s3deploy --target=production
+grunt s3deploy --production
 ```
 Defaults to target = staging.
 
@@ -49,7 +49,7 @@ The bucket to upload to for deploying to staging, **mandatory**.
 #### options.productionBucket
 Type: `String`
 
-The bucket to upload to for deploying to production, **mandatory**.
+The bucket to upload to for deploying to production. **mandatory**.
 
 #### options.connections
 Type: `Integer`

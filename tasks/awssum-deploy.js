@@ -1,7 +1,7 @@
 /*
  * grunt-awssum-deploy
  *
- * Copyright (c) 2013 Jordan Sitkin
+ * Copyright (c) 2014 HandsomeCode
  * Licensed under the MIT license.
  */
 
@@ -32,10 +32,10 @@ module.exports = function(grunt) {
     if (options.connections) { connections = options.connections; } else { connections = 3; }
     delete options.connections;
 
-    var target = (grunt.option('target') === 'production') ? 'production' : 'staging';
+    var bucket = grunt.option('production') ? options.productionBucket : options.stagingBucket;
 
     var defaults = {
-      BucketName: options[target+'Bucket'],
+      BucketName: bucket,
       Acl: 'public-read'
     };
 
