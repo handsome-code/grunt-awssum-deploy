@@ -1,6 +1,7 @@
 # grunt-awssum-deploy
 
 > Upload your static assets to an S3 bucket
+> Based on grunt-awssum-deploy by Jordan Sitkin (http://github.com/dustMason)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`

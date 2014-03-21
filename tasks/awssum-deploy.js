@@ -19,6 +19,8 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('s3deploy', 'deploy to S3 using awssum', function () {
 
+    var target = (grunt.option('target') === 'production') ? 'production' : 'staging';
+
     var options = this.options(),
       region,
       access,
@@ -33,7 +35,7 @@ module.exports = function(grunt) {
     delete options.connections;
 
     var defaults = {
-      BucketName: options.bucket,
+      BucketName: options[target+'Bucket'],
       Acl: 'public-read'
     };
 
