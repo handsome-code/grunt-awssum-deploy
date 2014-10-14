@@ -54,6 +54,11 @@ The bucket to upload to for deploying to production. **mandatory**.
 #### options.connections
 Type: `Integer`
 
+#### options.nocache
+Type: `String`
+
+Array of filepaths to apply s3 metadata Cache-Control max-age=0 to. Useful for preventing caching when using s3 with Cloudfront
+
 How many concurrent connections to keep open while uploading to S3. Defaults to **3**.
 
 #### Note
@@ -70,7 +75,8 @@ grunt.initConfig({
       stagingBucket: 'staging',
       productionBucket: 'prod',      
       access: 'public-read',
-      connections: 5
+      connections: 5,
+      nocache: ['index.html'] // files to to set cache-control max-age=0 on in s3 metadata
     },
     dist: {
       files: [{
