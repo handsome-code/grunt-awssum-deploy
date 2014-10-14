@@ -23,6 +23,7 @@ module.exports = function(grunt) {
       region,
       access,
       connections,
+      nocache,
       deployDone = this.async();
 
     if (options.region) { region = amz[options.region]; } else { region = amz.US_EAST_1; }
@@ -31,6 +32,8 @@ module.exports = function(grunt) {
     delete options.access;
     if (options.connections) { connections = options.connections; } else { connections = 3; }
     delete options.connections;
+    if (options.nocache) { nocache = options.nocache; } else { nocache = []; }
+    delete options.nocache;
 
     var bucket = grunt.option('production') ? options.productionBucket : options.stagingBucket;
 
@@ -83,6 +86,10 @@ module.exports = function(grunt) {
           ContentLength: src.length,
           Body: src
         };
+        // if filename passed in with nocache option add Cache-Control key/field with max-age=0 to prevent caching
+        if (nocache.indexOf(f.dest) > -1) {
+          options.CacheControl = "max-age=0";
+        }
         queue.push(options);
       });
     });

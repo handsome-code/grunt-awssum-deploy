@@ -1,7 +1,7 @@
 {
   "name": "grunt-awssum-deploy-branch",
   "description": "Deploy your static files to S3",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "homepage": "https://github.com/handsome-code/grunt-awssum-deploy-branch",
   "author": {
     "name": "HandsomeCode",
