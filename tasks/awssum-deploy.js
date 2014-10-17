@@ -78,10 +78,11 @@ module.exports = function(grunt) {
         }
       }).forEach(function(filepath) {
         var src = grunt.file.read(filepath, { encoding: null });
+        var ContentType = f.ContentType || mime.lookup(filepath);
         var options = {
           BucketName: defaults.BucketName,
           Acl: defaults.Acl,
-          ContentType: mime.lookup(filepath),
+          ContentType: ContentType,
           ObjectName: f.dest,
           ContentLength: src.length,
           Body: src
