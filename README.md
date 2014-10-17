@@ -54,14 +54,21 @@ The bucket to upload to for deploying to production. **mandatory**.
 #### options.connections
 Type: `Integer`
 
+How many concurrent connections to keep open while uploading to S3. Defaults to **3**.
+
 #### options.nocache
 Type: `String`
 
 Array of filepaths to apply s3 metadata Cache-Control max-age=0 to. Useful for preventing caching when using s3 with Cloudfront
 
-How many concurrent connections to keep open while uploading to S3. Defaults to **3**.
+### File Options
 
-#### Note
+#### ContentType
+Type: `String`
+
+Define Content-Type for file. Defaults to determining content-type automatically based on filename
+
+### Note
 The project is based on [awssum](http://awssum.io), and uses code from a [gist](https://gist.github.com/chilts/3687910) by @chilts and @twhid.
 
 ### Usage Examples
@@ -84,6 +91,15 @@ grunt.initConfig({
         cwd: 'dist/',
         src: '**/*.*', // note: you must not include directories
         dest: './'
+      }]
+    },
+    snapshots: {
+      files: [{
+        expand: true,
+        cwd: 'dist/snapshots/',
+        src: '**/*.*', // note: you must not include directories
+        dest: './',
+        contentType: 'text/html'
       }]
     }
   }
